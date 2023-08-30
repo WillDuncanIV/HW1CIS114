@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(128, 128, 128, 0.781);
+    background-color: rgba(255, 2, 238, 0.46);
 }
 @font-face {
     font-family: "racing";
@@ -7,7 +7,7 @@ body{
 }
 
 a {
-color: rgba(37, 35, 33, 0.699);
+color: rgba(86, 164, 115, 0.699);
 text-decoration: none;
 font-size: 50px;
 margin: 10px;
@@ -15,7 +15,7 @@ font-family: "racing";
 }
 
 a:hover{
-    color:rgb(206, 99, 0);
+    color:rgb(2, 245, 46);
     padding-left: 10px;
     transition:0.20s ease-in-out;
      }
@@ -24,7 +24,7 @@ a:hover{
      font-size: 200px;
      text-align: center;
      font-family: "racing";
-     color: rgb(206, 99, 0);
+     color: rgb(203, 248, 4);
  }
  .hoverani{
     display: inline-block;

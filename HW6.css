@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(128, 128, 128, 0.781);
+    background-color: rgba(4, 247, 8, 0.781);
 }
 @font-face {
     font-family: "racing";
@@ -15,7 +15,7 @@ font-family: "racing";
 }
 
 a:hover{
-    color:rgb(206, 99, 0);
+    color:rgb(2, 244, 240);
     padding-left: 10px;
     transition:0.20s ease-in-out;
      }
@@ -23,7 +23,7 @@ a:hover{
      font-size: 200px;
      text-align: center;
      font-family: "racing";
-     color: rgb(206, 99, 0);
+     color: rgb(243, 4, 127);
  }
  
  .hoverani{
