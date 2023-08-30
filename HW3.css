@@ -1,0 +1,53 @@
+body{
+    background-color: rgba(128, 128, 128, 0.781);
+}
+@font-face {
+    font-family: "racing";
+    src: url(fonts/Racing_Sans_One/RacingSansOne-Regular.ttf);
+}
+
+a {
+color: rgba(37, 35, 33, 0.699);
+text-decoration: none;
+font-size: 50px;
+margin: 10px;
+font-family: "racing";
+}
+
+a:hover{
+    color:rgb(206, 99, 0);
+    padding-left: 10px;
+    transition:0.20s ease-in-out;
+     }
+
+ h2{
+     font-size: 200px;
+     text-align: center;
+     font-family: "racing";
+     color: rgb(206, 99, 0);
+ }
+
+.hoverani{
+    display: inline-block;
+    position:relative;
+    color: #000000c7;
+  }
+.hoverani:after{
+    content: '';
+  position: absolute;
+  width: 85%;
+  transform: scaleX(0);
+  height: 6px;
+  bottom: 0;
+  left: 0;
+  background-color:#ce6300;
+  transition:0.20s ease-in-out;
+}
+
+.hoverani:hover:after{
+    transform: scaleX(1);
+}
+
+article{
+    text-align: center;
+}
