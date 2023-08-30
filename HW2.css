@@ -1,12 +1,12 @@
 body{
-    background-color: rgba(128, 128, 128, 0.781);
+    background-color: rgba(255, 0, 0, 0.781);
 }
 @font-face {
     font-family: "racing";
     src: url(fonts/Racing_Sans_One/RacingSansOne-Regular.ttf);
 }
  a {
-  font-family: "racing";
+  
     color: rgba(37, 35, 33, 0.699);
     text-decoration: none;
     font-size: 50px;
@@ -14,14 +14,14 @@ body{
  }
  
  h2{
-     font-family: "racing";
+
      font-size: 200px;
      text-align: center;
-     color: rgb(206, 99, 0);
+     color: rgb(0, 0, 0);
  }
 
  h3{
-    font-family: "racing";
+
     font-size: 100px;
     text-align: left;
     color: rgb(206, 99, 0);

@@ -5,11 +5,10 @@
 }
 
 body{
-    background-color: rgba(128, 128, 128, 0.78);
+    background-color: rgb(4, 20, 255);
 }
 
 h1{
-font-family: "racing";
 font-size: 80px;
 text-align: center;
 padding-bottom:50px;
@@ -34,7 +33,6 @@ Ul li{
 }
 
 ul li a{
-    font-family: "racing";
      color: rgb(0, 0, 0);
      font-size: 60px;
      cursor: pointer;
@@ -44,7 +42,7 @@ ul li a{
 }
 
 ul li a:hover{
-color: rgb(206, 99, 0);
+color: rgb(199, 199, 199);
 transition: .55s;
 }
 
