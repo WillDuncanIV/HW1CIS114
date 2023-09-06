@@ -9,20 +9,20 @@ body{
   
     color: rgba(37, 35, 33, 0.699);
     text-decoration: none;
-    font-size: 50px;
+    font-size: 30px;
     margin: 10px;
  }
  
  h2{
 
-     font-size: 200px;
+     font-size: 75px;
      text-align: center;
      color: rgb(0, 0, 0);
  }
 
  h3{
 
-    font-size: 100px;
+    font-size: 50px;
     text-align: left;
     color: rgb(206, 0, 196);
 }
