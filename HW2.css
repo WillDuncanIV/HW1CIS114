@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(255, 0, 0, 0.781);
+    background-color: rgba(0, 234, 255, 0.781);
 }
 @font-face {
     font-family: "racing";
@@ -24,7 +24,7 @@ body{
 
     font-size: 100px;
     text-align: left;
-    color: rgb(206, 99, 0);
+    color: rgb(206, 0, 196);
 }
 td{
     font-size: 60px;
