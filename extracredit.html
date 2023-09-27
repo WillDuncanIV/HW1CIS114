@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="HW2.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Learning Game</title>
+    <script>
+        function generateQuestion() {
+            const num1 = Math.floor(Math.random() * 10); 
+            const num2 = Math.floor(Math.random() * 10);
+
+            const answer = num1 * num2;
+            const question = `How much is ${num1} times ${num2}?`;
+
+            const userInput = parseInt(prompt(question)); 
+
+            if (userInput === answer) {
+                alert("Very good!"); 
+                playAgain();
+            } else {
+                alert("No. Please try again."); 
+                generateQuestion(); 
+            }
+        }
+
+        function playAgain() {
+            const playAgain = confirm("Do you want to play again?");
+
+            if (playAgain) {
+                generateQuestion(); s
+            } else {
+                alert("Thanks for playing. See you next time!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <a href="HW3.html" class="hoverani"> BACK TO HOMEWORK 3 </a>
+    <h1>Multiplication Learning Game</h1>
+    <button onclick="generateQuestion()">Start Game</button>
+</body>
+</html>

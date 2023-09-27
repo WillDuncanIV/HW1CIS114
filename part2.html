@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=" description" content="this is a home page for homework 4">
+    <link rel="stylesheet" href="HW3.css">
+
+    <title>Student Grades</title>
+</head>
+<body>
+    <h1> <a href="HW3.html" class="hoverani"> BACK TO HOMEWORK 3 </a> </h1>
+    <h1>Homework 3 Part 2</h1>
+    <form name="salesForm">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Value per Item</th>
+                    <th>Quantity Sold</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Item 1</td>
+                    <td>$20.99</td>
+                    <td><input type="number" name="item1Qty" min="0" step="1" /></td>
+                    <td><input type="text" name="item1Total" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Item 2</td>
+                    <td>$12.75</td>
+                    <td><input type="number" name="item2Qty" min="0" step="1" /></td>
+                    <td><input type="text" name="item2Total" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Item 3</td>
+                    <td>$9.95</td>
+                    <td><input type="number" name="item3Qty" min="0" step="1" /></td>
+                    <td><input type="text" name="item3Total" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Item 4</td>
+                    <td>$35.89</td>
+                    <td><input type="number" name="item4Qty" min="0" step="1" /></td>
+                    <td><input type="text" name="item4Total" readonly /></td>
+                </tr>
+            </tbody>
+        </table>
+        <label for="sellerName">Seller's Name:</label>
+        <input type="text" id="sellerName" name="sellerName" />
+
+        <input type="button" value="Enter" onclick="calculateItemTotal()" />
+        <input type="button" value="Submit" onclick="calculateEarnings()" />
+
+        <label for="totalEarnings">Total Earnings:</label>
+        <input type="text" id="totalEarnings" name="totalEarnings" readonly />
+    </form>
+
+    <script>
+        function calculateItemTotal() {
+            const item1Qty = parseFloat(document.forms["salesForm"]["item1Qty"].value) || 0;
+            const item2Qty = parseFloat(document.forms["salesForm"]["item2Qty"].value) || 0;
+            const item3Qty = parseFloat(document.forms["salesForm"]["item3Qty"].value) || 0;
+            const item4Qty = parseFloat(document.forms["salesForm"]["item4Qty"].value) || 0;
+
+            const item1Total = item1Qty * 20.99;
+            const item2Total = item2Qty * 12.75;
+            const item3Total = item3Qty * 9.95;
+            const item4Total = item4Qty * 35.89;
+
+            document.forms["salesForm"]["item1Total"].value = item1Total.toFixed(2);
+            document.forms["salesForm"]["item2Total"].value = item2Total.toFixed(2);
+            document.forms["salesForm"]["item3Total"].value = item3Total.toFixed(2);
+            document.forms["salesForm"]["item4Total"].value = item4Total.toFixed(2);
+        }
+
+        function calculateEarnings() {
+            const item1Total = parseFloat(document.forms["salesForm"]["item1Total"].value) || 0;
+            const item2Total = parseFloat(document.forms["salesForm"]["item2Total"].value) || 0;
+            const item3Total = parseFloat(document.forms["salesForm"]["item3Total"].value) || 0;
+            const item4Total = parseFloat(document.forms["salesForm"]["item4Total"].value) || 0;
+
+            const totalSales = item1Total + item2Total + item3Total + item4Total;
+            const commission = totalSales * 0.09;
+            const totalEarnings = commission + 250;
+
+            document.forms["salesForm"]["totalEarnings"].value = totalEarnings.toFixed(2);
+        }
+    </script>
+</body>
+</html>
