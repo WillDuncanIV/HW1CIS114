@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Part 1 - User Data Form">
+    <link rel="stylesheet" href="HW5.css">
+    <title>Part 1 - User Data Form</title>
+</head>
+<body>
+    <h1><a href="HW5.html" class="hoverani">Back to Homework 5</a></h1>
+    <h2>Part 1 - User Data Form</h2>
+
+    <form id="userForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required><br><br>
+
+        <label>Age Group:</label><br>
+        <input type="radio" id="ageGroup1" name="ageGroup" value="lessThan21">
+        <label for="ageGroup1">Less than 21</label><br>
+        <input type="radio" id="ageGroup2" name="ageGroup" value="21to50">
+        <label for="ageGroup2">Between 21 and 50</label><br>
+        <input type="radio" id="ageGroup3" name="ageGroup" value="olderThan50">
+        <label for="ageGroup3">Older than 50</label><br><br>
+
+        <label>Browsers Used:</label><br>
+        <input type="checkbox" id="firefox" name="browsers" value="firefox">
+        <label for="firefox">Firefox</label><br>
+        <input type="checkbox" id="edge" name="browsers" value="edge">
+        <label for="edge">Edge</label><br>
+        <input type="checkbox" id="chrome" name="browsers" value="chrome">
+        <label for="chrome">Chrome</label><br>
+        <input type="checkbox" id="safari" name="browsers" value="safari">
+        <label for="safari">Safari</label><br><br>
+
+        <label for="moviePreference">Movie Preference:</label><br>
+        <select id="moviePreference" name="moviePreference">
+            <option value="action">Action</option>
+            <option value="comedy">Comedy</option>
+            <option value="drama">Drama</option>
+            <option value="documentary">Documentary</option>
+            <option value="scienceFiction">Science Fiction</option>
+        </select><br><br>
+
+        <button type="button" id="submitButton">Submit</button>
+        <button type="button" id="clearButton">Clear</button>
+    </form>
+
+    <div id="outputArea"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userForm = document.getElementById("userForm");
+            const submitButton = document.getElementById("submitButton");
+            const clearButton = document.getElementById("clearButton");
+            const outputArea = document.getElementById("outputArea");
+
+            submitButton.addEventListener("click", function () {
+                // Validate user input
+                const fullName = document.getElementById("fullName").value;
+                const ageGroup = document.querySelector('input[name="ageGroup"]:checked');
+                const browsers = document.querySelectorAll('input[name="browsers"]:checked');
+                const moviePreference = document.getElementById("moviePreference").value;
+
+                if (!fullName || !ageGroup || browsers.length === 0 || !moviePreference) {
+                    outputArea.innerHTML = "Error: Please fill out all fields.";
+                } else {
+                    outputArea.innerHTML = "Thanks, your data was submitted!";
+                }
+            });
+
+            clearButton.addEventListener("click", function () {
+                userForm.reset();
+                outputArea.innerHTML = "";
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Part 2 of Homework 5 - Dropdown Menus">
+    <link rel="stylesheet" href="HW5.css">
+
+    <title>Homework 5 - Part 2</title>
+</head>
+<body>
+    <h1><a href="HW5.html" class="hoverani">Back to Homework 5</a></h1>
+    <h2>Part 2 - Dropdown Menus</h2>
+
+    <label for="menu1">Select a website (onchange event):</label>
+    <select id="menu1" onchange="openInNewTab(this.value)">
+        <option value="https://www.google.com">Google</option>
+        <option value="https://www.yahoo.com">Yahoo</option>
+        <option value="https://www.bing.com">Bing</option>
+    </select>
+
+    <br><br>
+
+    <label for="menu2">Select a website (onclick event):</label>
+    <select id="menu2">
+        <option value="https://www.wikipedia.org">Wikipedia</option>
+        <option value="https://www.reddit.com">Reddit</option>
+        <option value="https://www.stackoverflow.com">Stack Overflow</option>
+    </select>
+    <button onclick="openInNewTab(getSelectedValue('menu2'))">Open</button>
+
+    <script>
+        function openInNewTab(url) {
+            var win = window.open(url, '_blank');
+            win.focus();
+        }
+
+        function getSelectedValue(selectId) {
+            var selectElement = document.getElementById(selectId);
+            return selectElement.options[selectElement.selectedIndex].value;
+        }
+    </script>
+</body>
+</html>

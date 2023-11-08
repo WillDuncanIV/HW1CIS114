@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Part 3 of Homework 5 - State Info Lookup">
+    <link rel="stylesheet" href="HW5.css">
+
+    <title>Homework 5 - Part 3</title>
+</head>
+<body>
+    <h1><a href="HW5.html" class="hoverani">Back to Homework 5</a></h1>
+    <h2>Part 3 - State Info Lookup</h2>
+
+    <form id="stateInfoForm">
+        <label for="stateInput">Enter State Name or Abbreviation:</label>
+        <input type="text" id="stateInput" name="stateInput" required>
+
+        <button type="button" onclick="getStateInfo()">Get State Info</button>
+        <button type="reset">Clear</button>
+
+        <textarea id="output" readonly></textarea>
+    </form>
+
+    <script>
+        // State data in a two-dimensional array
+        var stateData = [
+            ["AL", "Alabama", "Montgomery", "4,903,185"],
+            ["AK", "Alaska", "Juneau", "731,545"],
+            ["AZ", "Arizona", "Phoenix", "7,278,717"],
+            ["AR", "Arkansas", "Little Rock", "3,017,825"],
+            ["CA", "California", "Sacramento", "39,512,223"],
+            ["CO", "Colorado", "Denver", "5,758,736"]
+            // Add more states as needed
+        ];
+
+        function getStateInfo() {
+            var userInput = document.getElementById("stateInput").value.trim().toUpperCase();
+            var outputArea = document.getElementById("output");
+
+            var found = false;
+            var info = "";
+
+            for (var i = 0; i < stateData.length; i++) {
+                if (userInput === stateData[i][0] || userInput === stateData[i][1].toUpperCase()) {
+                    found = true;
+                    info = "Thanks for your inquiry, here is the information you requested:\n";
+                    info += "State Abbr = " + stateData[i][0] + "\n";
+                    info += "State Name = " + stateData[i][1] + "\n";
+                    info += "Capital = " + stateData[i][2] + "\n";
+                    info += "Population = " + stateData[i][3];
+                    break;
+                }
+            }
+
+            if (found) {
+                outputArea.value = info;
+            } else {
+                outputArea.value = "Sorry, we do not have information about this state!\n";
+                outputArea.value += "We only have information about: ";
+                for (var i = 0; i < stateData.length; i++) {
+                    if (i > 0) {
+                        outputArea.value += ", ";
+                    }
+                    outputArea.value += stateData[i][0] + " (" + stateData[i][1] + ")";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
