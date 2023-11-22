@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=" description" content="this is a home page for homework 6">
+    <link rel="stylesheet" href="HW6.css">
+    <title>Homework 6</title>
+</head>
+<body>
+    <h1> <a href="HW6.html" class="hoverani"> BACK TO HOMEWORK 6 </a> </h1>
+    <h2> Homework 6 part 2</h2>
+    <h3>Part 2 - Character Search</h3>
+
+    <form id="part2Form">
+        <label for="longContent">Type a long content:</label>
+        <textarea id="longContent" rows="4" cols="50" placeholder="Type here..." required></textarea>
+        <label for="charInput">Type a single character:</label>
+        <input type="text" id="charInput" maxlength="1" placeholder="e.g., A" required>
+        <button type="button" onclick="searchCharacter()">Submit</button>
+        <div id="part2Output"></div>
+    </form>
+
+    <script>
+        function searchCharacter() {
+            var longContent = document.getElementById('longContent').value;
+            var searchChar = document.getElementById('charInput').value.toLowerCase();
+            var outputArea = document.getElementById('part2Output');
+
+            // Convert longContent to lowercase to make the search case-insensitive
+            var longContentLower = longContent.toLowerCase();
+
+            // Count occurrences of the search character in the long content
+            var charCount = 0;
+            for (var i = 0; i < longContentLower.length; i++) {
+                if (longContentLower.charAt(i) === searchChar) {
+                    charCount++;
+                }
+            }
+
+            // Display results in the output area
+            if (charCount > 0) {
+                outputArea.textContent = `The character '${searchChar}' appears ${charCount} times in the content.`;
+            } else {
+                // If character is not found, open a new window
+                var newWindow = window.open('', '_blank', 'width=300,height=100,top=100,left=100');
+                newWindow.document.write(`<p>Search character '${searchChar}' not found in the content you typed.</p>`);
+                // Close button in the new window
+                newWindow.document.write('<button onclick="window.close()">Close</button>');
+                // Clear the input box
+                document.getElementById('charInput').value = '';
+            }
+        }
+    </script>
+
+</body>
+</html>

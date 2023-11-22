@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=" description" content="this is a home page for homework 6">
+    <link rel="stylesheet" href="HW6.css">
+    <title>Homework 6</title>
+</head>
+<body>
+    <h1> <a href="HW6.html" class="hoverani"> BACK TO HOMEWORK 6 </a> </h1>
+    <h2> Homework 6 part 1</h2>
+
+        <h3>Part 1 - Decimal Number Operations</h3>
+    
+        <form id="part1Form">
+            <label for="decimalInput">Enter a number with 4 decimals:</label>
+            <input type="text" id="decimalInput" placeholder="e.g., 1234.5678" required>
+            <button type="button" onclick="processDecimal()">Submit</button>
+            <button type="button" onclick="clearForm('part1Form')">Clear</button>
+            <div id="part1Output"></div>
+        </form>
+    
+        <script>
+            function processDecimal() {
+                var userInput = document.getElementById('decimalInput').value;
+                var outputArea = document.getElementById('part1Output');
+    
+                // Check if the input is a valid number with at least 4 decimals
+                if (isNaN(userInput) || !/\.\d{4,}/.test(userInput)) {
+                    outputArea.textContent = "Error: Please enter a number with at least 4 decimals.";
+                } else {
+                    var originalNumber = parseFloat(userInput);
+                    var roundedInteger = Math.round(originalNumber);
+                    var squareRootInteger = Math.round(Math.sqrt(originalNumber));
+                    var roundedTenths = originalNumber.toFixed(1);
+                    var roundedHundredths = originalNumber.toFixed(2);
+                    var roundedThousandths = originalNumber.toFixed(3);
+    
+                    // Display results in the output area
+                    outputArea.innerHTML = `
+                        <p>You typed number ${originalNumber}</p>
+                        <p>Rounded to the nearest integer = ${roundedInteger}</p>
+                        <p>Square root rounded to integer = ${squareRootInteger}</p>
+                        <p>Rounded to the nearest 10th position = ${roundedTenths}</p>
+                        <p>Rounded to the nearest 100th position = ${roundedHundredths}</p>
+                        <p>Rounded to the nearest 1000th position = ${roundedThousandths}</p>
+                    `;
+                }
+            }
+    
+            function clearForm(formId) {
+                document.getElementById(formId).reset();
+                document.getElementById('part1Output').textContent = "";
+            }
+        </script>
+    
+
+</body>
+</html>

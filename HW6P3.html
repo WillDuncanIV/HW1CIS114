@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=" description" content="this is a home page for homework 6">
+    <link rel="stylesheet" href="HW6.css">
+    <title>Part 3 - Phone Number Formatter</title>
+    <!-- Include jQuery library and jQuery Mask plugin -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+</head>
+<body>
+    <h1> <a href="HW6.html" class="hoverani"> BACK TO HOMEWORK 6 </a> </h1>
+    <h2> Homework 6 part 3</h2>
+    <h1>Part 3 - Phone Number Formatter</h1>
+
+    <form id="part3Form">
+        <label for="phoneInput">Type the phone number:</label>
+        <input type="text" id="phoneInput" placeholder="(999) 999-9999" required>
+        <button type="button" onclick="processPhoneNumber()">Start Process</button>
+        <button type="button" onclick="clearForm('part3Form')">Clear</button>
+        <div id="part3Error"></div>
+        <input type="text" id="areaCode" readonly>
+        <input type="text" id="firstThreeDigits" readonly>
+        <input type="text" id="lastFourDigits" readonly>
+    </form>
+    <script>
+        // Apply jQuery Mask to format phone number input
+        $(document).ready(function(){
+            $('#phoneInput').mask('(000) 000-0000');
+        });
+
+        function processPhoneNumber() {
+            var phoneNumber = document.getElementById('phoneInput').value;
+            var errorArea = document.getElementById('part3Error');
+            var areaCodeInput = document.getElementById('areaCode');
+            var firstThreeDigitsInput = document.getElementById('firstThreeDigits');
+            var lastFourDigitsInput = document.getElementById('lastFourDigits');
+
+            // Check if the phone number is in the correct format
+            var regex = /^\(\d{3}\) \d{3}-\d{4}$/;
+            if (!regex.test(phoneNumber)) {
+                errorArea.textContent = "Error: Please enter the phone number in the format (999) 999-9999.";
+                areaCodeInput.value = '';
+                firstThreeDigitsInput.value = '';
+                lastFourDigitsInput.value = '';
+            } else {
+                // Clear error message
+                errorArea.textContent = '';
+
+                // Use regex and split method to extract phone number components
+                var phoneComponents = phoneNumber.match(/\d+/g);
+                areaCodeInput.value = phoneComponents[0];
+                firstThreeDigitsInput.value = phoneComponents[1];
+                lastFourDigitsInput.value = phoneComponents[2];
+            }
+        }
+
+        function clearForm(formId) {
+            document.getElementById(formId).reset();
+            document.getElementById('part3Error').textContent = '';
+        }
+    </script>
+
+</body>
+<body>
+   
+</body>
+</html>
