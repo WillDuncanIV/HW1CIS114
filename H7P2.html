@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2 - Cookies</title>
+    <link rel="stylesheet" href="HW2.css">
+</head>
+<body>
+    <h1>Part 2 - Cookies</h1>
+
+    <!-- Script to check if cookies exist and display appropriate content -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const userForm = document.getElementById('userForm');
+            const nameInput = document.getElementById('name');
+            const usernameInput = document.getElementById('username');
+
+            // Check if cookies exist
+            const getNameCookie = getCookie('name');
+            const getUsernameCookie = getCookie('username');
+
+            if (getNameCookie && getUsernameCookie) {
+                // Cookies exist, dynamically create welcome back message
+                const welcomeBackMessage = document.createElement('p');
+                welcomeBackMessage.textContent = 'Welcome back, ' + getNameCookie + '!';
+                document.body.appendChild(welcomeBackMessage);
+            } else {
+                // Cookies don't exist, show the form
+                userForm.style.display = 'block';
+            }
+
+            // Function to retrieve cookie by name
+            function getCookie(name) {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith(name + '=')) {
+                        return cookie.substring(name.length + 1);
+                    }
+                }
+                return null;
+            }
+        });
+
+        // Function to save user information in cookies
+        function saveUserInfo() {
+            const name = document.getElementById('name').value;
+            const username = document.getElementById('username').value;
+
+            // Save cookies without expiration date (session cookies)
+            document.cookie = 'name=' + name;
+            document.cookie = 'username=' + username;
+
+            // Reload the page to display the welcome back message
+            location.reload();
+        }
+    </script>
+
+    <!-- Form for user to enter name and username -->
+    <form id="userForm" style="display: none;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+
+        <button type="button" onclick="saveUserInfo()">Submit</button>
+    </form>
+
+    <!-- Hyperlink to go back to Homework 7 -->
+    <p><a href="HW7.html">Go back to Homework 7</a></p>
+</body>
+</html>

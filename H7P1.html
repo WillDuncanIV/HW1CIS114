@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 1 - Styling Content</title>
+    <link rel="stylesheet" href="HW3.css">
+    <style>
+        /* Default styles for the content area */
+        #content-area {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Part 1 - Styling Content</h1>
+
+    <!-- Content area to apply styles -->
+    <div id="content-area">
+        <p>This is a sample paragraph. Feel free to style it!</p>
+        <p>Another paragraph for styling practice.</p>
+        <p>And one more for good measure.</p>
+    </div>
+
+    <!-- Form for user to select styles -->
+    <form>
+        <label>Background Color:</label><br>
+        <input type="radio" name="bg-color" value="lightblue"> Light Blue<br>
+        <input type="radio" name="bg-color" value="lightgreen"> Light Green<br><br>
+
+        <label>Text Styles:</label><br>
+        <input type="checkbox" name="underline"> Underline<br>
+        <input type="checkbox" name="bold"> Bold<br>
+        <input type="checkbox" name="italic"> Italic<br><br>
+
+        <label>Font Size:</label>
+        <select name="font-size">
+            <option value="1em">Small</option>
+            <option value="1.5em">Medium</option>
+            <option value="2em">Large</option>
+        </select><br><br>
+
+        <!-- Hyperlink to go back to Homework 7 -->
+        <p><a href="HW7.html">Go back to Homework 7</a></p>
+    </form>
+
+    <!-- Script to apply selected styles -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const contentArea = document.getElementById('content-area');
+            const form = document.querySelector('form');
+
+            form.addEventListener('change', function () {
+                // Apply background color
+                const bgColorRadio = document.querySelector('input[name="bg-color"]:checked');
+                if (bgColorRadio) {
+                    contentArea.style.backgroundColor = bgColorRadio.value;
+                }
+
+                // Apply text styles
+                const underlineCheckbox = document.querySelector('input[name="underline"]');
+                const boldCheckbox = document.querySelector('input[name="bold"]');
+                const italicCheckbox = document.querySelector('input[name="italic"]');
+                
+                contentArea.style.textDecoration = underlineCheckbox.checked ? 'underline' : 'none';
+                contentArea.style.fontWeight = boldCheckbox.checked ? 'bold' : 'normal';
+                contentArea.style.fontStyle = italicCheckbox.checked ? 'italic' : 'normal';
+
+                // Apply font size
+                const fontSizeSelect = document.querySelector('select[name="font-size"]');
+                contentArea.style.fontSize = fontSizeSelect.value;
+            });
+        });
+    </script>
+</body>
+</html>
