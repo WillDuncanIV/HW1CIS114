@@ -4,13 +4,96 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name=" description" content="this is a home page for homework 8">
+    <meta name="description" content="This is a home page for homework 8">
     <link rel="stylesheet" href="HW8.css">
-
     <title>Homework 8</title>
 </head>
+
+<style>
+    table, th, td {
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+    }
+</style>
+
 <body>
-    <h1> <a href="index.html" class="hoverani"> BACK TO HOME PAGE </a> </h1>
-    <h2> Homework 8</h2>
+    <p><a href="H7P1.html">extra Credit</a></p>
+    <h1>Homework 8 - AJAX Application</h1>
+    <!-- Explanation of AJAX -->
+    <h4>Explanation of AJAX</h4>
+<h3>  1. Initializing XMLHttpRequest:
+To start, a new object called XMLHttpRequest is created. This object helps the webpage communicate with the server, allowing information to be exchanged without causing disruptions. 
+</h3>
+<h3>2. Handling User Clicks with loadDoc:
+When the user clicks the "Get CD collection" button, the loadDoc function takes charge. In this function, the XMLHttpRequest object is set up to send a request to the server, specifically asking for the contents of the "cd_catalog.xml" file.
+</h3>
+<h3>3. Reacting to Server Responses:
+The onload event handler steps in to manage the server's response once the XMLHttpRequest operation is successfully completed. It triggers the myFunction function and passes along the XMLHttpRequest object.
+</h3>
+<h3>4. Processing Data with myFunction:
+Inside the myFunction function, the XML data received from the server is processed. It extracts key information, like the artist and title, from each CD entry in the XML file. Then, it dynamically creates an HTML table to showcase this information on the webpage.    
+</h3>   
+<h3>In simpler terms, these AJAX calls make it possible to fetch and display CD details in a way that's more lively and doesn't disrupt the overall webpage experience. It's like getting information in the background, so the user can keep interacting without any delays.</h3>
+    <!-- AJAX is a technique for creating dynamic and interactive web pages by asynchronously fetching data from a server without requiring a full page reload. -->
+
+    <!-- Button to trigger the AJAX call -->
+    <button type="button" onclick="loadDoc()">Get CD collection</button>
+    <br><br>
+    <!-- Placeholder for the dynamically generated table -->
+    <table id="demo"></table>
+
+    <script>
+        // AJAX function to fetch data from XML file
+        function loadDoc() {
+            const xhttp = new XMLHttpRequest();
+            // Event handler for successful completion of the AJAX request
+            xhttp.onload = function() {
+                myFunction(this);
+            }
+            // Setting up the GET request to the XML file
+            xhttp.open("GET", "cd_catalog.xml");
+            // Sending the request to the server
+            xhttp.send();
+        }
+
+        // Function to process and display XML data
+        function myFunction(xml) {
+            // Extracting the XML document and CD elements
+            const xmlDoc = xml.responseXML;
+            const x = xmlDoc.getElementsByTagName("CD");
+            // Initializing the HTML table structure
+            let table="<tr><th>Title</th><th>Artist</th><th>Country</th><th>Company</th><th>Price</th><th>Year</th></tr>";
+            // Looping through CD elements to populate the table
+            for (let i = 0; i < x.length; i++) { 
+                table += "<tr><td>" +
+                // Extracting title information
+                x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                // Extracting artist information
+                x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                // Extracting country information
+                x[i].getElementsByTagName("COUNTRY")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                // Extracting company information
+                x[i].getElementsByTagName("COMPANY")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                // Extracting price information
+                x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                // Extracting year information
+                x[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue +
+                "</td></tr>";
+            }
+            // Updating the HTML content with the generated table
+            document.getElementById("demo").innerHTML = table;
+        }
+    </script>
+
+    <!-- Hyperlink to navigate back to Homework 1 -->
+    <a href="index.html">Back to Homework 1</a>
 </body>
 </html>

@@ -26,6 +26,15 @@ a:hover{
      font-family: "racing";
      color: rgb(239, 1, 108);
  }
+ h3{font-size: 20px;
+    text-align: ;
+    color: rgb(0, 0, 0);}
+h4{
+    font-size: 30px;
+    text-align: center;
+    font-family: "racing";
+    color: rgb(239, 1, 108);
+}   
  .hoverani{
     display: inline-block;
     position:relative;
